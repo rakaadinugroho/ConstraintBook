@@ -51,7 +51,8 @@ public class BookActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseBook> call, Response<ResponseBook> response) {
                 if (response.isSuccessful()){
-                    bookData.add((Item) response.body().getItems());
+                    ResponseBook responseBook    = response.body();
+                    bookData.addAll(responseBook.getItems());
                     adapter.notifyDataSetChanged();
                 }
             }
